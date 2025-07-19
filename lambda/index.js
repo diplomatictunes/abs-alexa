@@ -1024,7 +1024,7 @@ function amazonCrossmatch(titleResolutions, authorResolutions, accessToken) {
     }
 
     const apiUrl = titleResolutions.values[j].value.id
-    const titleData = getEntityData(apiUrl, accessToken, "en-US") || null;
+    const titleData = getEntityData(apiUrl, accessToken, "en-AU") || null;
     if (!titleData) {
       callFailed = true
     }
@@ -1196,7 +1196,7 @@ const PlayBookIntentHandler = {
       const bookUrl = handlerInput.requestEnvelope.request.intent.slots.title.resolutions?.resolutionsPerAuthority?.[0]?.values?.[0]?.value?.id
         ?? null
       if (bookUrl) {
-        const bookData = getEntityData(bookUrl, accessToken, "en-US")
+        const bookData = getEntityData(bookUrl, accessToken, "en-AU")
         if (bookData) {
           amazonAuthor = author = bookData["entertainment:author"][0].name[0]["@value"] // grab main/first author
           // english ? set book name from here?
@@ -1209,7 +1209,7 @@ const PlayBookIntentHandler = {
       const authorUrl = handlerInput.requestEnvelope.request.intent.slots.author.resolutions?.resolutionsPerAuthority?.[0]?.values?.[0]?.value?.id
         ?? null
       if (authorUrl) {
-        const authorData = getEntityData(authorUrl, accessToken, "en-US")
+        const authorData = getEntityData(authorUrl, accessToken, "en-AU")
         if (authorData) {
           // attempt to match the amazon book title from the rawTitle
           const key = {
